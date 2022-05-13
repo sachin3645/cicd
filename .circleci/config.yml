@@ -14,9 +14,15 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints: "fa:48:7b:f1:13:9b:f5:a3:dd:a9:13:ef:96:eb:53:ee"
       - run:
           name: "Say hello"
-          command: "echo Hello, World!"
+          command: |
+          "echo Hello, World!"
+          uname -a
+          uptime
+          ifconfig
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
