@@ -27,6 +27,7 @@ jobs:
           name: SSH to EC2
           command: |
             ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 uname -a
+            uname -a
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
