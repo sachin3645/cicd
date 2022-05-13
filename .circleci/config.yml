@@ -28,7 +28,7 @@ jobs:
       - run:
           name: SSH to EC2
           command: |
-            scp -r ~/repo/ ubuntu@54.90.154.237:~/
+            scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ~/repo/ ubuntu@54.90.154.237:~/
             ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 ./script.sh
             uname -a
 
