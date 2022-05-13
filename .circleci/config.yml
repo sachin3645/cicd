@@ -30,7 +30,7 @@ jobs:
           command: |
             scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ~/repo/ ubuntu@54.90.154.237:~/
             echo "Here i'm `pwd`"
-            ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 (echo "Here i'm `pwd`" && ./repo/script.sh && echo "Here i'm `pwd`")
+            ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 ./repo/script.sh
             uname -a
 
 # Invoke jobs via workflows
