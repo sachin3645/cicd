@@ -29,7 +29,7 @@ jobs:
           name: SSH to EC2
           command: |
             scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ~/repo/ ubuntu@54.90.154.237:~/
-            ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 repo/script.sh
+            ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 chmod 777 repo/script.sh && ./repo/script.sh
             uname -a
 
 # Invoke jobs via workflows
