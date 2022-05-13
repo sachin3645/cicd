@@ -6,6 +6,7 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   say-hello:
+    working_directory: ~/repo
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -16,6 +17,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "fa:48:7b:f1:13:9b:f5:a3:dd:a9:13:ef:96:eb:53:ee"
+      - checkout
       - run:
           name: "Say hello"
           command: |
@@ -26,7 +28,8 @@ jobs:
       - run:
           name: SSH to EC2
           command: |
-            ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 uname -a
+            scp -r ~/repo/ ubuntu@54.90.154.237:~/
+            ssh -o StrictHostKeyChecking=no ubuntu@54.90.154.237 ./script.sh
             uname -a
 
 # Invoke jobs via workflows
